@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Eddy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background: white;
+      color: black;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Semi-Transparent Header */
+    header {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 750px;
+      height: 60px;
+      background: rgba(128, 128, 128, 0.4); /* Semi-transparent gray */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 10;
+      backdrop-filter: blur(5px);
+      border-radius: 10px;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    header button {
+      background: black;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* Full-Screen Sections */
+    .main {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .main button {
+      background: black;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+
+    .main button:hover {
+      background: #333;
+    }
+
+    .scroll-section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: white;
+      background: black;
+      transition: background 0.5s ease;
+    }
+
+    .scroll-section p {
+      line-height: 1.6;
+      text-align: center;
+      font-size: 25px;
+      width: 750px;
+
+    }
+
+    /* Terminal Styles */
+    .terminal {
+      position: relative;
+      width: 700px;
+      height: 400px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0;
+      filter: drop-shadow(30px 20px 7px #333);
+    }
+
+    .terminal-header {
+      background: #e8e8e8;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      border-bottom: 1px solid #dcdcdc;
+    }
+
+    .terminal-header .button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .button.red {
+      background: #ff5f57;
+    }
+
+    .button.yellow {
+      background: #ffbd2e;
+    }
+
+    .button.green {
+      background: #28c840;
+    }
+
+    .terminal-content {
+      text-align: left;
+      padding: 15px;
+      white-space: pre-line;
+      overflow-y: auto;
+      background: #1e1e1e;
+      color: #a1e7ff;
+      flex-grow: 1;
+    }
+
+    /* Semi-Transparent Overlay */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .overlay.active {
+      opacity: 1;
+    }
+
+    .overlay button {
+      background: black;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .overlay button:hover {
+      background: #333;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 22px;
+      background: black;
+      color: white;
+    }
+
+    .footerText {
+      padding-left: 10px;
+      padding-bottom: 5px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    /* Floating Effect for Images */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <img src="Logo2.png" alt="Your Logo">
+    <button>No Feds</button>
+  </header>
+
+  <!-- Main Content -->
+  <section class="main">
+    <h1>Eddy will 10X getting thorugh your email.</h1>
+
+    <!-- Floating Terminal Element -->
+    <div class="terminal">
+      <!-- Terminal Header -->
+      <div class="terminal-header">
+        <div class="button red"></div>
+        <div class="button yellow"></div>
+        <div class="button green"></div>
+      </div>
+      <!-- Terminal Content -->
+      <div class="terminal-content">
+        <pre>
+$ neofetch
+                   -`               
+                  .o+`
+                 `ooo/
+                `+oooo:                 user@EmailEddy
+               `+oooooo:                -----------------------
+               -+oooooo+:               OS: Arch
+             `/:-:++oooo+:              Kernel: Darwin 21.4.0
+            `/++++/+++++++:             Uptime: 2d 4h 15m
+           `/++++++++++++++:            Packages: 69
+          `/+++ooooooooooooo/`          Shell: zsh
+         ./ooosssso++osssssso+`         Resolution: 2560x1600
+        .oossssso-````/ossssss+`        Terminal: Wave
+       -osssssso.      :ssssssso.       CPU: Intel i9
+      :osssssss/        osssso+++.      Memory: 32GB
+     /ossssssss/        +ssssooo/-
+   `/ossssso+/:-        -:/+osssso+-
+  `+sso+:-`                 `.-/+oso:
+ `++:.                           `-/+/
+ .`                                 `
+                           
+        </pre>
+      </div>
+    </div>
+
+    <button>Download Now</button>
+  </section>
+
+  <!-- Scroll Section -->
+  <section class="scroll-section">
+    <!-- <h2>Eddy is all you need</h2> -->
+    <p>Every day good hard-working people are kept from their families because of never-ending emails. This is not freedom; it is death! Eddy gives you the ability to quickly address all your emails on one page.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footerText">Created by <a class="repoLink" href="https://github.com/uplandwave/EddyisPublic">Quantum Llamas</a></p>
+  </footer>
+</body>
+</html>
